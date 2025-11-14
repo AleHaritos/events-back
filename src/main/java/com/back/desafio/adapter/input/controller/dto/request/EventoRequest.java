@@ -1,8 +1,6 @@
 package com.back.desafio.adapter.input.controller.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +20,7 @@ public class EventoRequest {
     private String descricao;
 
     @NotNull(message = "A data e hora são obrigatórias")
+    @FutureOrPresent(message = "Não é permitido datas retroativas.")
     private LocalDateTime dataHoraEvento;
 
     @NotBlank(message = "O local não deve ser nulo")
